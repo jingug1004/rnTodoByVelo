@@ -23,6 +23,7 @@ function App() {
 const styles = StyleSheet.create({
   block: {
     flex: 1,
+    backgroundColor: 'white',
   },
 });
 
