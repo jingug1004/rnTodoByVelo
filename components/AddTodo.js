@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
   Image,
-  Platform,
-  TouchableOpacity,
-  TouchableNativeFeedback,
   Keyboard,
+  Platform,
+  StyleSheet,
+  TextInput,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-function AddTodo({ date }) {
+function AddTodo({ onInsert }) {
   const [text, setText] = useState('');
 
   const onPress = () => {
+    onInsert(text);
     setText('');
     Keyboard.dismiss();
   };
