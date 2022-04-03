@@ -1,8 +1,8 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-function DateHead({ date }) {
+const DateHead = ({ date }) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -19,7 +19,7 @@ function DateHead({ date }) {
       </View>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   statusBarPlaceholder: {

@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-  Image,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-function Empty() {
+const Empty = () => {
   return (
     <>
       <View style={styles.block}>
@@ -22,7 +14,7 @@ function Empty() {
       </View>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   statusBarPlaceholder: {

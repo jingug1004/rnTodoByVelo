@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-function AddTodo({ onInsert }) {
+const AddTodo = ({ onInsert }) => {
   const [text, setText] = useState('');
 
   const onPress = () => {
@@ -51,7 +51,7 @@ function AddTodo({ onInsert }) {
       })}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   block: {
