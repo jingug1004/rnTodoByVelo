@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { View, Button, Text, StyleSheet } from 'react-native';
 
 const DetailScreen = ({ route, navigation }) => {
   useEffect(() => {

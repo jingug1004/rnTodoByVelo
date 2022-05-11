@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const HeaderlessScreen = ({ navigation }) => {

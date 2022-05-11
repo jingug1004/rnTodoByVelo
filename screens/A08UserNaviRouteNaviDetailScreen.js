@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+=======
+import React, {useEffect} from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+>>>>>>> origin/master
 
 const IDText = () => {
   const route = useRoute();
