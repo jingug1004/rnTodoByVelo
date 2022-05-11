@@ -1,11 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Button, Text, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-=======
-import {Button, Text, View} from 'react-native';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
->>>>>>> origin/master
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createMaterialTopTabNavigator();

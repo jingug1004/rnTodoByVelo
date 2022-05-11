@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React, { useCallback } from 'react';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Button, Text, View } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-=======
-import React, {useCallback} from 'react';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import {Button, Text, View} from 'react-native';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
->>>>>>> origin/master
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createMaterialBottomTabNavigator();
