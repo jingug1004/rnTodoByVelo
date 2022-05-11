@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Button } from 'react-native';
+import { Button, View } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   useEffect(() => {

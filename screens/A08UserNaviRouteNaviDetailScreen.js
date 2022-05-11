@@ -1,7 +1,18 @@
 import React, { useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
-const DetailScreen = ({ route, navigation }) => {
+const IDText = () => {
+  const route = useRoute();
+  return (
+    <Text>
+      id: {route.params.id} // key: {route.key} // name: {route.name} // path:{' '}
+      {route.path}
+    </Text>
+  );
+};
+
+const A08UserNaviRouteNaviDetailScreen = ({ route, navigation }) => {
   useEffect(() => {
     navigation.setOptions({
       title: `상세 정보 - ${route.params.id}`,
@@ -10,7 +21,7 @@ const DetailScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.block}>
-      <Text style={styles.text}>id: {route.params.id}</Text>
+      <IDText />
       <View style={styles.buttons}>
         <Button
           title={'다음'}
@@ -37,4 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DetailScreen;
+export default A08UserNaviRouteNaviDetailScreen;

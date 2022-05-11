@@ -226,3 +226,10 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+
+// p.255 아이콘이 있는 하단 탭
+project.ext.vectoricons = [
+    iconFontNames: ['MaterialIcons.ttf']
+]
+
+// apply from: '../../node_modules/react-native-vector-icons/fonts.gradle'
