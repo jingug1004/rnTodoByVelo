@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 // import A01Todo from './AppPages/A01Todo';
 // import A02NaviStack from './AppPages/A02NaviStack';
@@ -8,7 +9,10 @@ import React from 'react';
 // import A06TopTabNavi from './AppPages/A06TopTabNavi';
 // import A07BottomTabNavi from './AppPages/A07BottomTabNavi';
 // import A08UseNaviRouteNavi from './AppPages/A08UseNaviRouteNavi';
-import A09UseFocusEffect from './AppPages/A09UseFocusEffect';
+// import A09UseFocusEffect from './AppPages/A09UseFocusEffect';
+// import B01DayLog from './AppPages/B01DayLog';
+import B01RootStack from './B01screens/B01RootStack';
+import { B01LogContextProvider } from './B01context/B01LogContext';
 
 const App = () => {
   // return <A01Todo />;
@@ -19,7 +23,15 @@ const App = () => {
   // return <A06TopTabNavi />;
   // return <A07BottomTabNavi />;
   // return <A08UseNaviRouteNavi />;
-  return <A09UseFocusEffect />;
+  // return <A09UseFocusEffect />;
+  // return <B01DayLog />;
+  return (
+    <NavigationContainer>
+      <B01LogContextProvider>
+        <B01RootStack />
+      </B01LogContextProvider>
+    </NavigationContainer>
+  );
 };
 
 export default App;
