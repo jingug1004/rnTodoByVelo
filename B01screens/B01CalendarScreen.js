@@ -1,124 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Button, StyleSheet, View } from 'react-native';
-
-const FadeInAndOut = () => {
-  const animation = useRef(new Animated.Value(1)).current;
-  const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    Animated.timing(animation, {
-      toValue: hidden ? 0 : 1,
-      useNativeDriver: true,
-    }).start();
-  }, [hidden, animation]);
-
-  return (
-    <View style={styles.block}>
-      <Animated.View style={[styles.rectangle, { opacity: animation }]} />
-      <Button
-        title={'FadeIn'}
-        onPress={() => {
-          Animated.timing(animation, {
-            toValue: 1,
-            useNativeDriver: true,
-          }).start();
-        }}
-      />
-      <Button
-        title={'FadeOut'}
-        onPress={() => {
-          Animated.timing(animation, {
-            toValue: 0,
-            useNativeDriver: true,
-          }).start();
-        }}
-      />
-      <Animated.View style={[styles.rectangle, { opacity: animation }]} />
-      <Button
-        title={'Toggle'}
-        onPress={() => {
-          setHidden(!hidden);
-        }}
-      />
-    </View>
-  );
-};
-
-const SlideLeftAndRight = () => {
-  const animation = useRef(new Animated.Value(0)).current;
-  const [enabled, setEnabled] = useState(false);
-  const [enabled2, setEnabled2] = useState(false);
-
-  useEffect(() => {
-    Animated.timing(animation, {
-      toValue: enabled ? 150 : 0,
-      useNativeDriver: true,
-    }).start();
-  }, [enabled, animation]);
-
-  useEffect(() => {
-    Animated.timing(animation, {
-      toValue: enabled2 ? 1 : 0,
-      useNativeDriver: true,
-    }).start();
-  }, [enabled2, animation]);
-
-  return (
-    <View style={styles.block}>
-      <Animated.View
-        style={[styles.rectangle, { transform: [{ translateX: animation }] }]}
-      />
-      <Button
-        title={'Toggle'}
-        onPress={() => {
-          setEnabled(!enabled);
-        }}
-      />
-      <Animated.View
-        style={[
-          styles.rectangle,
-          {
-            transform: [
-              {
-                translateX: animation.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 150],
-                }),
-              },
-            ],
-            opacity: animation.interpolate({
-              inputRange: [0, 1],
-              outputRange: [1, 0],
-            }),
-          },
-        ]}
-      />
-      <Button
-        title={'Toggle'}
-        onPress={() => {
-          setEnabled2(!enabled2);
-        }}
-      />
-    </View>
-  );
-};
+import React, { useContext, useMemo, useState } from 'react';
+import { StyleSheet } from 'react-native';
+import B01CalendarView from '../B01components/B01CalendarView';
+import B01LogContext from '../B01context/B01LogContext';
+import { format } from 'date-fns';
+import B01FeedList from '../B01components/B01FeedList';
 
 const B01CalendarScreen = () => {
+  const { logs } = useContext(B01LogContext);
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), 'yyyy-MM-dd'),
+  );
+
+  const markedDates = useMemo(
+    () =>
+      logs.reduce((acc, current) => {
+        const formattedDate = format(new Date(current.date), 'yyyy-MM-dd');
+        acc[formattedDate] = { marked: true };
+        return acc;
+      }, {}),
+    [logs],
+  );
+
+  const filteredLogs = logs.filter(
+    log => format(new Date(log.date), 'yyyy-MM-dd') === selectedDate,
+  );
+
   return (
-    <View style={styles.block}>
-      <FadeInAndOut />
-      <SlideLeftAndRight />
-    </View>
+    <B01FeedList
+      logs={filteredLogs}
+      ListHeaderComponent={
+        <B01CalendarView
+          markedDates={markedDates}
+          selectedDate={selectedDate}
+          onSelectDate={setSelectedDate}
+        />
+      }
+    />
   );
 };
 
-const styles = StyleSheet.create({
-  block: {},
-  rectangle: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'black',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default B01CalendarScreen;

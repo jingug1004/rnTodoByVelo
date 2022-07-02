@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import B01FeedsScreen from './B01FeedsScreen';
 import B01CalendarScreen from './B01CalendarScreen';
 import B01SearchScreen from './B01SearchScreen';
+import B01SearchHeader from '../B01components/B01SearchHeader';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,7 @@ const B01MainTab = () => {
           tabBarIcon: ({ color, size }) => (
             <Icon name={'search'} size={size} color={color} />
           ),
+          headerTitle: () => <B01SearchHeader />,
         }}
       />
     </Tab.Navigator>

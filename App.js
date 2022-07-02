@@ -11,8 +11,11 @@ import { NavigationContainer } from '@react-navigation/native';
 // import A08UseNaviRouteNavi from './AppPages/A08UseNaviRouteNavi';
 // import A09UseFocusEffect from './AppPages/A09UseFocusEffect';
 // import B01DayLog from './AppPages/B01DayLog';
+// ---------------------------------------------------------------------------
 import B01RootStack from './B01screens/B01RootStack';
 import { B01LogContextProvider } from './B01context/B01LogContext';
+import { B01SearchContextProvider } from './B01context/B01SearchContext';
+// ---------------------------------------------------------------------------
 
 const App = () => {
   // return <A01Todo />;
@@ -25,13 +28,17 @@ const App = () => {
   // return <A08UseNaviRouteNavi />;
   // return <A09UseFocusEffect />;
   // return <B01DayLog />;
+  // ---------------------------------------------------------------------------
   return (
     <NavigationContainer>
-      <B01LogContextProvider>
-        <B01RootStack />
-      </B01LogContextProvider>
+      <B01SearchContextProvider>
+        <B01LogContextProvider>
+          <B01RootStack />
+        </B01LogContextProvider>
+      </B01SearchContextProvider>
     </NavigationContainer>
   );
+  // ---------------------------------------------------------------------------
 };
 
 export default App;
